@@ -1,0 +1,38 @@
+.Driver_container {
+  display: flex;
+  width: 99%;
+  flex-wrap: wrap;
+  gap: 1vw;
+  background-color: ye;
+}
+
+.Book_now_top_container {
+    padding: 2% 0%;
+    margin-top: 4vw;
+    border-radius: var(--radius);
+  background-color: var(--dark2);
+
+}
+.Book_now_top_container h2{
+    color: white;
+}
+
+.Driver_piechart_container {
+  width: 100%;
+  height: 20vw;
+  box-shadow: var(--skyeBlueBoxShadow);
+  background-color: var(--back);
+  border-radius: var(--radius);
+  display: flex;
+}
+
+.Driver_TinyLineChart_container {
+  width: 60%;
+  height: 20vw;
+  padding: 1vw;
+  border-radius: var(--radius);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  color: white;
+}

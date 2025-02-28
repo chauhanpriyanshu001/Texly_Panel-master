@@ -1,0 +1,14 @@
+.TotalDriverDetailPage_container{
+    width: 100%;
+}
+.TotalDriverDetailPage_chartContain{
+width: 90%;
+height: 30vw;
+}
+.TotalDriverDetailPage_table_container{
+    background-color: var(--dark);
+}
+.TotalDriverDetailPage_table_container table{
+    border-radius: 8px;
+    background-color: var(--back);
+}

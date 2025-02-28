@@ -1,0 +1,9 @@
+.YBookLater_container{
+
+    width: 100%;
+    margin: 1vw 0vw;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1vw;
+}
+

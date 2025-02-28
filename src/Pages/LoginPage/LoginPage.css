@@ -1,0 +1,41 @@
+.loginPage_container {
+  
+  width: 100vw !important;
+  height: 100vh !important;
+  overflow: hidden;
+  z-index: 10000000;
+}
+.loginPage_container::before {
+  content: none;
+}
+.loginPage_container::after {
+  content: none;
+}
+.ForgetPasswordForm_container {
+  overflow: hidden;
+  width: 100vw;
+  display: flex;
+  padding: 5%;
+}
+.ForgetPasswordForm_container Button {
+  width: max-content;
+}
+
+.ForgetPasswordForm_overflowHidder {
+  width: 100%;
+  overflow: hidden;
+}
+.verifyOtp_container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.verifyOtp_container button {
+  margin-top: 2%;
+}
+
+.reset_password_form {
+  display: flex;
+  flex-direction: column;
+  height: 17vw;
+}

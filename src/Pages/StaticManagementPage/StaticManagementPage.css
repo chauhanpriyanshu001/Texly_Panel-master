@@ -1,0 +1,17 @@
+.StaticManagementPage_container{
+
+    height: 80vh;
+}
+.StaticManagementPage_container>button{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.StaticManagementPage_container>button{
+    color: black;
+    margin: 2vw;
+    width: 20vw;
+}
+.StaticManagementPage_container>button:hover{
+    background-color: gray;
+}

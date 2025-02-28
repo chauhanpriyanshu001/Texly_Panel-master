@@ -1,0 +1,32 @@
+.OnlineUser_container{
+    width: 100%;
+    background-color:var(--dark2);
+    margin: 1vw 0vw;
+    padding: 1vw;
+    border-radius: var(--radius);
+    color: var(--white); 
+    display: flex;
+    flex-wrap: wrap;
+    gap:2vw
+}
+.OnlineUser_container>h1{
+    width: 40%;
+}
+.OnlineUser_container>Button{
+    margin-top: 1vw;
+}
+.OnlineUser_chartContainer{
+width: 40%;
+height: 22vw;
+
+}
+.onlineUser_box2{
+gap: 1vw;
+width: 55%;
+display: flex;
+flex-wrap: wrap;
+}
+.onlineUser_box2>div{
+width: 47%;
+display: flex;
+}

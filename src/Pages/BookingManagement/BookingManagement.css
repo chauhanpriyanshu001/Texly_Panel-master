@@ -1,0 +1,14 @@
+.ViewBooking-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1vw;
+  padding: 4vw;
+  background-color: var(--back);
+  color: white;
+  font-size: 1.2va;
+}
+.ViewBooking-container span {
+  font-weight: 700;
+  width: 20%;
+  display: inline-block;
+}

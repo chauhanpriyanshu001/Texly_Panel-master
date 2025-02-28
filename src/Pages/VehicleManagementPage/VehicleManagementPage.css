@@ -1,0 +1,90 @@
+.VehicleManagementPage_form {
+  color: White;
+
+  padding: 2vw;
+  border-radius: 2vw;
+}
+
+.VehicleManagementPage_form * {
+  font-weight: 700;
+}
+/* .VehicleManagementPage_form {
+    border-radius: var(--radius);
+} */
+.VehicleManagementPage_form fieldset {
+  border-radius: var(--radius);
+}
+.CreateVehicle_form {
+  color: White;
+  background-color: var(--dark2);
+  padding: 2vw;
+  border-radius: 2vw;
+}
+.CreateVehicle_form b {
+  display: inline-block;
+  width: 9%;
+}
+.CreateVehicle_form input[type="text"] {
+  width: 30%;
+  background-color: rgb(61, 61, 61);
+}
+.CreateVehicle_form > div {
+  margin-bottom: 3vw;
+}
+.CreateVehicle_form br {
+  margin-top: 2vw;
+}
+.CreateVehicle_form * {
+  font-weight: 700;
+}
+/* .VehicleManagementPage_form {
+    border-radius: var(--radius);
+} */
+.VehicleManagementPage_form fieldset {
+  border-radius: var(--radius);
+}
+.EditVehicle_Form_container {
+  color: white;
+}
+.EditVehicle_Form_container * {
+  font-weight: 700;
+}
+
+.EditVehicle_Form_container input {
+  font-weight: 700;
+}
+.EditVehicle_Form_container input[type="text"] {
+  background-color: rgb(61, 61, 61);
+  width: 40%;
+}
+
+.EditVehicle_Form_container input::placeholder {
+  color: black;
+}
+.EditVehicle_Form_container button:hover {
+  background-color: rgb(126, 126, 126);
+}
+.viewVehicle_modal_container {
+  color: white;
+}
+input[type="radio"]:checked {
+  background-color: black;
+  width: 1vw;
+  color: yellow;
+  background-color: darkblue;
+}
+.field_set label {
+  padding: 1vw;
+  border-radius: 8px;
+  background-color: rgb(53, 53, 53);
+  width: 10vw;
+}
+.field_set label:hover {
+  background-color: rgb(65, 59, 59);
+}
+.field_set input[type="radio"] {
+  visibility: hidden;
+}
+.label_hightligher {
+  background-color: rgb(101, 158, 14) !important;
+}

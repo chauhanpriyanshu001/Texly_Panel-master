@@ -1,0 +1,38 @@
+.otp-input{
+    display: flex;
+    gap: .5vw;
+}
+
+.otp-input input{
+    box-sizing: border-box;
+    width: 5vw;
+    font-size: 4vw;
+    padding: .5vw 0vw;
+    color: black;
+    border-radius: 1vw;
+    border: 1px solid var(--dark);
+    font-weight: 500;
+    cursor: pointer;
+}
+.otp-input input:focus{
+    outline-color: var(--btnColor);
+    color: black;
+     box-shadow: 0 0 5px #0858F7;
+      
+}
+@media screen and (max-width: 900px) {
+
+    .otp-input input{
+        padding: 2vw;
+        border-radius: 1.2vw;
+        margin-right: 1vw;
+    }
+}
+@media screen and (max-width: 600px) {
+    .otp-input input{
+        padding: 4vw;
+        border-radius: 2vw;
+        margin-left: 3vw;
+    }
+
+}

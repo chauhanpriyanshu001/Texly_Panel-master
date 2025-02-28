@@ -1,0 +1,38 @@
+.termStatic_container {
+  min-height: 90vh;
+}
+.termStatic_container h3 {
+  color: white;
+}
+.EditStatic_container {
+  height: 85vh;
+  padding: 0vw 2vw;
+  border-radius: 1vw;
+  background-color: var(--back);
+  padding-bottom: 3vw;
+  color: white;
+  padding-top: 1vw;
+  box-shadow: var(--dark_boxShadow);
+}
+.editor_container {
+    height: 40vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.EditStatic_Main {
+    background-color: rgb(219, 217, 217);
+    border-radius: 1vw;
+    padding: 1vw;
+    box-shadow: var(--dark_boxShadow);
+    color: black;
+}
+.EditStatic_Main span{
+    font-weight: 700;
+}
+
+.EditStatic_container_button {
+    background-color: rgb(199, 196, 27);
+    width: 100%;
+    font-weight: 700;
+    padding: .5vw 0px;
+}

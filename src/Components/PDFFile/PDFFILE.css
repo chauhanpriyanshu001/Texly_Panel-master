@@ -1,0 +1,63 @@
+.PDFIle_container {
+  width: 100%;
+  font-size: 10px;
+  font-weight: 700;
+  font-family :-apple-system, BlinkMacSystemFont, "Segoe UI",
+  "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+  "Helvetica Neue", sans-serif imo !important;
+  font-family: 'Courier New', Courier, monospace;
+  font-family:Open-Sans;
+}
+.headerImage {
+  width: 4vw;
+  height: 4vw;
+  margin-right: 3%;
+}
+.header_container {
+  padding: 0vw 2vw;
+  display: flex;
+  gap: 70%;
+  border-top: 2px solid aqua;
+}
+.header_container h2 {
+  font-size: 2vw;
+}
+.PDFIle_container ul {
+  list-style: none;
+}
+.PDFIle_container ul:nth-child(2n + 1) {
+  width: 60%;
+}
+.PDFIle_box1 {
+padding: 0vw 2vw;
+
+  display: flex;
+}
+.PDFIle_box2{
+  margin: 5% 0%;
+  display: flex;
+  justify-content: end;
+}
+.PDFIle_box2 > span {
+  display: flex;
+  flex-direction: column;
+  gap: 2%;
+  margin-right: 10%;
+}
+.PDFIle_box3 {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 1vw;
+}
+.PDFIle_box3 span {
+  display: inline-block;
+  padding: 0vw 4vw;
+}
+.PDFIle_box3 hr {
+  width: 100%;
+}
+.PDFIle_box4 {
+  text-align: center;
+  margin-top: 10vw;
+}

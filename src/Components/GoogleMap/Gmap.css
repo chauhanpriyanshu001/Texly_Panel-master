@@ -1,0 +1,12 @@
+.MapComponent_container{
+    width: 110%;
+    height:90vh;
+    position: relative;
+    bottom: 1vw;
+    right: 2%;
+    overflow: hidden;
+    background-color: #00ffff;
+    display: flex;
+    flex-direction: column;
+
+}

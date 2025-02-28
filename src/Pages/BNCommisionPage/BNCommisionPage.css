@@ -1,0 +1,10 @@
+.BNCommisionPage_container{
+    width: 100%;
+}
+.BNCommisionPage_chart{
+    height: 40vw;
+    background-color: var(--back);
+    border-radius: var(--radius);
+    padding: 2vw;
+    width: 100%;
+}

@@ -1,0 +1,87 @@
+.DriverManagement_page_container {
+  min-height: 70vh;
+}
+.driver_document_container {
+  display: flex;
+  gap: 1vw;
+  flex-wrap: wrap;
+}
+.driver_document_container div {
+  padding-top: 2vw;
+  border-top: 4px solid black;
+}
+.driver_document_container img {
+  width: 20vw;
+  margin: 10px 0px;
+}
+.DriverDocsPage_container {
+  background-color:var(--dark2);
+  padding: 1vw;
+}
+.DriverDocsPage_container td {
+  padding: 1vw;
+}
+
+.driver_detail_modal {
+  padding: 2vw;
+  display: flex;
+  background-color: white;
+}
+.driver_document_container_box {
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: space-between;
+}
+.driver_detail_modal div {
+  margin-top: 10px;
+}
+.driver_document_container_box > span {
+  min-height: 4vw;
+}
+.Driver_management_Driving_licence {
+}
+.AccRejButtomComp_container{
+  margin: 1vw;
+}
+.driverManagement_button_approve {
+  background-color: black;
+  color: white;
+  padding: 1vw;
+  border-radius: var(--radius);
+  box-shadow: 4px 4px 10px rgb(0, 0, 0, 0.6);
+  background-color: green;
+}
+.driverManagement_button_approve:hover {
+  background-color: rgba(0, 128, 0, 0.671);
+}
+.driverManagement_button_reject {
+  box-shadow: 4px 4px 10px rgb(0, 0, 0, 0.6);
+  background-color: black;
+  padding: 1vw;
+  border-radius: var(--radius);
+  color: white;
+  background-color: red;
+}
+.driverManagement_button_reject:hover {
+  background-color: rgba(255, 0, 0, 0.733);
+}
+.AdharCard_Detail_container {
+  /* border: 2px solid rgb(0, 0, 0, 0.6); */
+  padding: 1vw;
+  /* width: 49%; */
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 2vw;
+}
+.status_span_driverManagement {
+  width: 10vw;
+  background-color: var(--backColor10);
+  border-radius: 6px;
+  padding: 0% 1%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* margin-left: 10%; */
+  color: white;
+}

@@ -1,0 +1,14 @@
+.StateAndCiy_form {
+  color: white;
+  gap: 1vw;
+  display: flex;
+}
+.StateAndCiy_form select {
+  height: 4vw;
+}
+.StateAndCiy_form input {
+  height: 4vw;
+}
+.StateAndCiy_form Button {
+  height: 4vw;
+}

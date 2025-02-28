@@ -1,0 +1,307 @@
+body {
+  margin: 0;
+  font-family: Quicksand, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+* {
+  font-family: Quicksand;
+  box-sizing: border-box;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+.input[type="text"],
+.input[type="number"],
+.input[type="password"] {
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  padding: 0.5vw 2vw;
+  font-size: 1.3vw;
+  background-color: rgb(45, 45, 45);
+  color: rgb(128, 128, 128) !important;
+}
+.input:focus {
+  outline: none;
+  border: none;
+}
+
+.input::placeholder {
+  font-weight: 700;
+  font-size: 1vw;
+}
+button {
+  border: none;
+  cursor: pointer;
+}
+:root {
+  --back: #191c24;
+  --backLight: #2c313d;
+  /* --dark:#12151e; */
+  --white: #ffffff;
+  --dark: #000;
+  --dark2: #000015;
+  --textColor1: #a7a7a7;
+  --radius: 8px;
+  --textDrawerColor: #ffffff;
+  --boxPadding: 0.8vw;
+  --dark_boxShadow: 4px 4px 10px rgb(0, 0, 0, 0.5);
+  --light_boxShadow: 4px 4px 10px rgb(255, 255, 255, 0.3);
+  --redBoxShadow: 2px 0px 10px rgb(255, 0, 0);
+  --greenBoxShadow: 0px 0px 6px rgb(9, 255, 0, 0.5);
+  --skyeBlueBoxShadow: 0px 0px 6px rgb(0, 140, 255);
+  --backColor1: #4799eb;
+  --backColor2: #948dd2;
+  --backColor3: #519668;
+  --backColor4: #5299e0;
+  --backColor5: #d5a439;
+  --backColor6: #857dcc;
+  --backColor7: #5299e0;
+  --backColor8: #d5a439;
+  --backColor9: #c77171;
+  --backColor22: #00aaff;
+  --backColor11: #d5a439;
+  --backColor11t: #d5a43980;
+  --backColor12: #c77171;
+  --backColor12t: #c7717180;
+  --backColor24: #4218c0;
+  --backColor25: rgb(0, 140, 255);
+  --backColor13: hsla(263, 90%, 44%, 0.1);
+  --backColor26: #adc4ce;
+  --backColor27: #064663;
+  --backColor28: #041c32;
+  --backColor14: #4638c2;
+  --backColor15: #2d2587;
+  --backColor15t: #2d258780;
+  --backColor16: #d1d2d3;
+  --backColor21: #2e8c47;
+  --backColor21t: #2e8c4780;
+  --backColor17: #4799eb;
+  --backColor18: #e1a82d;
+  --backColor19: #d16767;
+  --backColor19t: #d1676780;
+  --backColor20: #dd131394;
+  --backColor10: #857dcc;
+  --cui-link-hover-color: #a9a4db;
+  --backColor29: #a7a7a7;
+  --cui-bg-primary: #857dcc;
+  --cui-bg-secondary: #a7a7a7;
+  --cui-bg-danger: #c77171;
+  --cui-bg-light: hsla(0, 0%, 100%, 0.1);
+  --cui-bg-dark: rgba(0, 0, 21, 0.1);
+  --cui-text-success: #519668;
+  --cui-text-light: hsla(0, 0%, 100%, 0.1);
+  --cui-text-dark: rgba(0, 0, 21, 0.1);
+  --cui-secondary: #a7a7a7;
+  --cui-success: #519668;
+  --cui-info: #5299e0;
+  --cui-secondary-stop: #fff;
+  --cui-success-start: #45a164;
+  --cui-info-stop: #4280b4;
+  --iconColor1: RoyalBlue;
+  --iconColor2: LimeGreen;
+  --iconColor3: SlateGray;
+  --iconColor4: Coral;
+  --iconColor5: SkyBlue;
+  --iconColor6: DarkOrange; /* Updated color for iconColor6 */
+  --iconColor7: CharcoalBlack;
+  --iconColor8: Mauve;
+  --iconColor9: MediumPurple; /* Updated color for iconColor9 */
+  --iconColor10: Teal; /* Updated color for iconColor10 */
+}
+.main {
+  border-radius: var(--radius);
+  padding: 1vw;
+  background-color: var(--dark2);
+}
+
+.main > h1 {
+  cursor: pointer;
+  color: white;
+}
+.boxMain_container {
+  display: flex;
+  gap: 3%;
+  flex-wrap: wrap;
+  
+}
+.box_main {
+  width: 22.5%;
+  height: 10vw;
+  margin-bottom: 2%;
+  display: flex;
+  flex-direction: column;
+  /* background-color: var(--back);*/
+  border-radius: var(--radius);
+  color: var(--textColor1);
+  padding: 1vw;
+  cursor: pointer;
+  font-weight: 700;
+  box-shadow: var(--greenBoxShadow);
+  background-color: var(--back);
+}
+/* .box_main:nth-child(5n) {
+  background-color: var(--backColor11t);
+  transition: all 0.3s ease-in-out;
+}
+.box_main:nth-child(5n):hover {
+  background-color: black;
+}
+.box_main:nth-child(5n + 4) {
+  background-color: var(--backColor12t);
+  transition: all 0.3s ease-in-out;
+}
+.box_main:nth-child(5n + 4):hover {
+  background-color: black;
+}
+.box_main:nth-child(5n + 3) {
+  background-color: var(--backColor15t);
+  transition: all 0.3s ease-in-out;
+}
+.box_main:nth-child(5n + 3):hover {
+  background-color: black;
+}
+.box_main:nth-child(5n + 2) {
+  background-color: var(--backColor21t);
+  transition: all 0.3s ease-in-out;
+}
+.box_main:nth-child(5n + 2):hover {
+  background-color: var(--backColor7);
+}
+.box_main:nth-child(5n + 1) {
+  transition: all 0.3s ease-in-out;
+  background-color: var(--backColor19t);
+}
+.box_main:nth-child(5n + 1):hover {
+  background-color: var(--backColor7);
+} */
+
+.box_main > h1 {
+  font-size: 2vw;
+  margin: 1vw 0vw;
+
+  display: flex;
+  align-items: center;
+  letter-spacing: -1px;
+  text-align: center;
+}
+.box_main:hover {
+  box-shadow: var(--skyeBlueBoxShadow);
+}
+::-webkit-scrollbar {
+  width: 12px; /* width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #333; /* color of the track */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #555; /* color of the scrollbar */
+}
+/* table css here */
+th {
+  background-color: var(--dark);
+}
+th {
+  padding: 8px; /* Adjust as needed */
+  color: white;
+  font-size: 0.8em;
+}
+
+.select {
+  border-radius: 4px;
+  background-color: black;
+  color: white;
+  padding: 0.6vw;
+}
+table {
+  width: 100%;
+  margin: 1vw 0vw;
+  margin-bottom: 3vw;
+  /* background-color: var(--cui-info); */
+  background-color: var(--back);
+  color: rgb(240, 240, 240);
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 1em;
+}
+
+td {
+  width: 15%;
+  text-align: center;
+  border-left: 1px solid rgb(167, 167, 167);
+
+  border-bottom: 1px solid rgb(167, 167, 167);
+}
+tfoot {
+  text-align: center;
+  padding: 1vw;
+  background-color: white;
+  height: 1vw;
+}
+tr:hover {
+  opacity: 1;
+}
+
+.button {
+  padding: 0.7vw 1.6vw;
+  border-radius: 0.5vw;
+  background-color: rgb(49, 180, 32);
+  color: rgb(255, 255, 255);
+  border: 2px solid black;
+  transition: all 0.3s ease;
+}
+.button:hover {
+  border: 2px solid rgb(189, 189, 189);
+  color: white;
+}
+.inc_green {
+  padding: 0px 1vw;
+  margin-left: 8px;
+  background-color: rgb(66, 255, 0, 0.3);
+  color: rgb(66, 255, 0);
+  border-radius: 4px;
+}
+.dec_red {
+  padding: 0px 1vw;
+  margin-left: 8px;
+  background-color: rgba(255, 0, 0, 0.3);
+  color: rgba(255, 0, 0, 0.1);
+  border-radius: 4px;
+}
+.box_IncDec_align {
+  display: flex;
+  justify-content: space-between;
+}
+.box_IncDec_align > small {
+  font-weight: 500;
+  font-size: 1.5vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.backImage {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+}
+.red_icon_color {
+  color: red;
+  cursor: pointer;
+}
+.green_icon_color {
+  color: green;
+  cursor: pointer;
+}
+.MuiPagination-root {
+  button {
+    color: white !important;
+  }
+}
+/* react data table component css */

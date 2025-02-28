@@ -1,0 +1,12 @@
+.DBYBookNow_container{
+    
+    width: 100%;
+    margin: 1vw 0vw;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1vw;
+}
+.DBYBookNow_container>h1{
+width: 100%;
+text-align: center;
+}

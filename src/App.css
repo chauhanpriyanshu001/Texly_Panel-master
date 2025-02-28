@@ -1,0 +1,22 @@
+
+.App {
+  background-color: var(--dark2);
+}
+html{
+  background-color: var(--dark2);
+}
+.panel_List {
+  color: white;
+}
+.Main_Routes {
+  /* height: calc(100vh - 72px);
+  width: calc(100vw - 260px);
+  overflow-y: scroll; */
+  background-color: var(--dark2);
+  padding: 0vw 1vw;
+  padding-top: 1vw;
+  overflow-x: hidden;
+}
+.panel_List:hover{
+  background-color: #345058;
+}

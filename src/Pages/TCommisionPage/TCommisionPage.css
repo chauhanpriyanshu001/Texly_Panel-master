@@ -1,0 +1,10 @@
+.TCommisionPage_container{
+    width: 100%;
+}
+.TCommisionPage_piechart{
+    height: 40vw;
+    background-color: var(--back);
+    border-radius: var(--radius);
+    padding: 2vw;
+    width: 20%;
+}
