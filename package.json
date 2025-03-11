@@ -2,6 +2,7 @@
   "name": "texlypanel",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://new-backend-env.eba-etbspyrg.ap-south-1.elasticbeanstalk.com",
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
