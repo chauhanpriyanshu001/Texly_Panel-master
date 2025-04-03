@@ -3,7 +3,8 @@ import "./LoginPage.css";
 import texly from "../../Assets/img/texly.png";
 import BASE_URL from "../../variable";
 import axios from "axios";
-import { LoginContext } from "../../Context";
+// import  LoginContext from "../../Context";
+import { LoginContext } from '../../Context';
 import { useContext, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
@@ -57,7 +58,7 @@ const ForgetPasswordForm = ({ loginForm }) => {
     confirmPassword: "",
   });
   const navigate = useNavigate();
-  const { setLoginStatus } = useContext(LoginContext);
+  const { set } = useContext(LoginContext);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const handleOtpVerify = async (e) => {
@@ -100,7 +101,7 @@ const ForgetPasswordForm = ({ loginForm }) => {
           }
         );
         sessionStorage.removeItem("resetToken");
-        setLoginStatus(true);
+        // setLoginStatus(true);
         loginForm();
         console.log({
           message: "from reset password api",
@@ -125,9 +126,9 @@ const ForgetPasswordForm = ({ loginForm }) => {
     }
   };
   return (
-    <div 
-   
-    className="ForgetPasswordForm_overflowHidder">
+    <div
+
+      className="ForgetPasswordForm_overflowHidder">
       <div
         className="ForgetPasswordForm_container"
         style={{
@@ -262,6 +263,163 @@ const ForgetPasswordForm = ({ loginForm }) => {
   );
 };
 
+// const LoginPageForm = () => {
+//   const [values, setValues] = useState({
+//     mobileNumber: "",
+//     password: "",
+//     showPassword: false,
+//     passwordError: false,
+//   });
+//   const [error, seterror] = useState("");
+//   const { loginStatus, setLoginStatus } = useContext(LoginContext);
+//   const navigate = useNavigate();
+//   const autoLogin = async () => {
+//     const token = sessionStorage.getItem("adminToken");
+//     try {
+//       if (token) {
+//         await axios.get(`${BASE_URL}/admin/verifyTokenAndAdmin`, {
+//           headers: {
+//             token,
+//           },
+//         });
+//         setLoginStatus(true);
+//         console.log("auto Login Success");
+//         console.log(loginStatus);
+//         navigate("/");
+//       }
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
+//   useEffect(() => {
+//     autoLogin();
+//   }, []);
+//   const handleChange = (prop) => (event) => {
+//     setValues({ ...values, [prop]: event.target.value });
+//   };
+
+//   const handleClickShowPassword = () => {
+//     setValues({ ...values, showPassword: !values.showPassword });
+//   };
+
+//   const handleMouseDownPassword = (event) => {
+//     event.preventDefault();
+//   };
+
+//   // const handleSubmit = async (event) => {
+//   //   event.preventDefault();
+//   //   try {
+//   //     const res = await axios.post(`${BASE_URL}/admin/loginAdmin`, {
+//   //       ...values,
+//   //     });
+//   //     sessionStorage.setItem("adminToken", res.data.result.token);
+//   //     setLoginStatus(true);
+//   //     navigate("/");
+//   //   } catch (error) {
+//   //     console.log(error);
+//   //     setValues({
+//   //       ...values,
+//   //       ["passwordError"]: error?.response?.data?.responseMessage,
+//   //     });
+//   //   }
+//   // };
+//   const handleSubmit = async (event) => {
+//     event.preventDefault();
+//     try {
+//       const res = await axios.post(`${BASE_URL}/admin/loginAdmin`, {
+//         ...values,
+//       });
+
+//       // Store the token and user type in session storage
+//       sessionStorage.setItem("adminToken", res.data.result.token);
+//       sessionStorage.setItem("userType", res.data.result.userType);
+
+//       setLoginStatus(true);
+
+//       // Redirect based on user type
+//       if (res.data.result.userType === "ADMIN") {
+//         navigate("/");
+//       } else if (res.data.result.userType === "SUPPORT") {
+//         navigate("/contactus");
+//       }
+//     } catch (error) {
+//       console.log(error);
+//       setValues({
+//         ...values,
+//         ["passwordError"]: error?.response?.data?.responseMessage,
+//       });
+//     }
+//   };
+//   return (
+//     <Grid
+//       container
+//       justify="center"
+//       alignItems="center"
+//       wrap="wrap"
+//       direction="column"
+//       style={{ height: "80vh" }}
+//     >
+//       <Grid item xs={4}>
+//         <form onSubmit={handleSubmit}>
+//           <Typography variant="h5" gutterBottom>
+//             <b>Super Admin Login</b>
+//           </Typography>
+//           <FormControl fullWidth margin="normal">
+//             <TextField
+//               label="MobileNumber"
+//               variant="outlined"
+//               value={values.mobileNumber}
+//               onChange={handleChange("mobileNumber")}
+//               required
+//               error={error}
+//             />
+//           </FormControl>
+//           <FormControl fullWidth margin="normal">
+//             <TextField
+//               type={values.showPassword ? "text" : "password"}
+//               label="Password"
+//               variant="outlined"
+//               value={values.password}
+//               onChange={handleChange("password")}
+//               error={values.passwordError}
+//               helperText={values.passwordError ? values.passwordError : ""}
+//               InputProps={{
+//                 endAdornment: (
+//                   <InputAdornment position="end">
+//                     <IconButton
+//                       aria-label="toggle password visibility"
+//                       onClick={handleClickShowPassword}
+//                       onMouseDown={handleMouseDownPassword}
+//                     >
+//                       {values.showPassword ? (
+//                         <VisibilityIcon />
+//                       ) : (
+//                         <VisibilityOffIcon />
+//                       )}
+//                     </IconButton>
+//                   </InputAdornment>
+//                 ),
+//               }}
+//               required
+//             />
+//           </FormControl>
+//           <FormControl fullWidth margin="normal">
+//             <Button
+//               type="submit"
+//               variant="contained"
+//               style={{
+//                 backgroundColor: "var(--dark)",
+//                 color: "white",
+//               }}
+//             >
+//               Login
+//             </Button>
+//           </FormControl>
+//         </form>
+//       </Grid>
+//     </Grid>
+//   );
+// };
 const LoginPageForm = () => {
   const [values, setValues] = useState({
     mobileNumber: "",
@@ -334,11 +492,12 @@ const LoginPageForm = () => {
     >
       <Grid item xs={4}>
         <form onSubmit={handleSubmit}>
-          <Typography variant="h5" gutterBottom>
+          <Typography variant="h5" gutterBottom style={{color:"black"}}>
             <b>Super Admin Login</b>
           </Typography>
           <FormControl fullWidth margin="normal">
             <TextField
+              
               label="MobileNumber"
               variant="outlined"
               value={values.mobileNumber}
@@ -400,9 +559,9 @@ const LoginPage = () => {
 
   return (
     <div className="loginPage_container"
-    style={{
-      backgroundColor:"white"
-    }}
+      style={{
+        backgroundColor: "white"
+      }}
     >
       <span>
         <img
@@ -443,3 +602,4 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
+

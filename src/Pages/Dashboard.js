@@ -19,7 +19,7 @@ import { useEffect } from "react";
 import { UsersContext } from "../Context";
 const Dashboard = () => {
   const { setDashBoardName } = useContext(NameContext);
-  const {scrollDashboard, setScrollDashboard}=useContext(UsersContext);
+  const { scrollDashboard, setScrollDashboard } = useContext(UsersContext);
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
@@ -31,7 +31,7 @@ const Dashboard = () => {
     };
   }, []);
 
-  
+
   useEffect(() => {
     setDashBoardName("Texly Dashboard");
     if (scrollDashboard) {
