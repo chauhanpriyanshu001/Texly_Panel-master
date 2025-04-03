@@ -273,7 +273,7 @@ const ChatMessage = ({ message }) => {
     </Box>
   );
 };
-const socket = io("http://localhost:8080");
+const socket = io("http://testserver-env.eba-gbxfvgdm.ap-south-1.elasticbeanstalk.com");
 const ContactUsPage = () => {
   const [contacts, setContacts] = useState([]);
   const [activeContact, setActiveContact] = useState(null);
