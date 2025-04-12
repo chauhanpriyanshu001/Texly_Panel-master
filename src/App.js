@@ -625,6 +625,11 @@ function App() {
   });
   const [open, setOpen] = React.useState(false);
   const userType = sessionStorage.getItem("userType");
+  useEffect(() => {
+
+    console.log(userType, "this is user type")
+  }, [userType])
+
 
   // Redirect if not authorized
   const RedirectToContactUs = () => {
@@ -746,10 +751,11 @@ function App() {
               <Routes>
                 {/* ContactUs route - accessible to both ADMIN and SUPPORT */}
                 <Route path="/ContactUs" element={<ContactUsPage />} />
-
+                <Route path="/Profile" element={<ProfilePage />} />
                 {/* For SUPPORT users, redirect all other routes to ContactUs */}
                 {userType === "SUPPORT" ? (
                   <>
+                    {/* <Route path="/Profile" element={<ProfilePage />} /> */}
                     <Route path="*" element={<RedirectToContactUs />} />
                   </>
                 ) : (
@@ -763,7 +769,7 @@ function App() {
                     <Route path="/AboutUsStatic" element={<AboutUsStatic />} />
                     <Route path="/Terms&conditionStatic" element={<TermStatic />} />
                     <Route path="/PrivacyPolicy" element={<PrivacyPolicyStatic />} />
-                    <Route path="/Profile" element={<ProfilePage />} />
+                    {/* <Route path="/Profile" element={<ProfilePage />} /> */}
                     <Route path="/TransactionManagement" element={<TransactionPaymentpage />} />
                     <Route path="/TransactionManagement/DownloadPdf" element={<PDFFile />} />
                     <Route path="/BookingManagement" element={<BookingManagement />} />

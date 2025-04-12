@@ -17,7 +17,7 @@ const ProfileComp = () => {
   const logoutHandler = async () => {
     const token = sessionStorage.getItem("adminToken");
     try {
-      const res = await axios.post(`${BASE_URL}/admin/adminLogout`,{}, {
+      const res = await axios.post(`${BASE_URL}/admin/adminLogout`, {}, {
         headers: {
           token
         },
@@ -31,6 +31,7 @@ const ProfileComp = () => {
 
   const getAdminProfile = async () => {
     const token = sessionStorage.getItem("adminToken");
+    console.log(token)
     try {
       const res = await axios.get(`${BASE_URL}/admin/viewProfile`, {
         headers: {
@@ -47,9 +48,9 @@ const ProfileComp = () => {
   }, []);
   return (
     <div className="ProfileComp_container"
-    onClick={handleClick}
+      onClick={handleClick}
     >
-      <img  src={admin?.profilePic} alt="" />
+      <img src={admin?.profilePic} alt="" />
       <div className="ProfileComp_container_box">
         <h5>+91 {admin?.mobileNumber}</h5>
         <h5>{admin?.name}...</h5>
