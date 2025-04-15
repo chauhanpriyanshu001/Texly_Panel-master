@@ -27,7 +27,7 @@ const ProtectedRoute = ({ children }) => {
   // For SUPPORT users, only allow access to /contactus
   if (userType === "SUPPORT") {
     // If path is exactly /contactus, allow access
-    if (location.pathname === "/contactus") {
+    if (location.pathname === "/contactus" || location.pathname === "/profile") {
       return children;
     } 
     // For any other path, redirect to /contactus

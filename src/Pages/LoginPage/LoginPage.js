@@ -469,7 +469,9 @@ const LoginPageForm = () => {
       const res = await axios.post(`${BASE_URL}/admin/loginAdmin`, {
         ...values,
       });
+      console.log(res.data, "this is the data of admin");
       sessionStorage.setItem("adminToken", res.data.result.token);
+      sessionStorage.setItem("userType", res.data.result.userType);
       setLoginStatus(true);
       navigate("/");
     } catch (error) {
@@ -492,12 +494,12 @@ const LoginPageForm = () => {
     >
       <Grid item xs={4}>
         <form onSubmit={handleSubmit}>
-          <Typography variant="h5" gutterBottom style={{color:"black"}}>
+          <Typography variant="h5" gutterBottom style={{ color: "black" }}>
             <b>Super Admin Login</b>
           </Typography>
           <FormControl fullWidth margin="normal">
             <TextField
-              
+
               label="MobileNumber"
               variant="outlined"
               value={values.mobileNumber}
