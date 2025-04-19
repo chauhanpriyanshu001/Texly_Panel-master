@@ -480,7 +480,7 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-
+// import alertSound from "./alert.mp3";
 import TotalDriverDetailPage from "./Pages/TotalActiveDriverPage/TotalActiveDriverDetailPage";
 import TCommisionPage from "./Pages/TCommisionPage/TCommisionPage";
 import BNCommisionPage from "./Pages/BNCommisionPage/BNCommisionPage";
@@ -538,6 +538,8 @@ import CommisionPage from "./Pages/CommisionPage/CommisionPage";
 import PDFFile from "./Components/PDFFile/PDFFile";
 import EditVehicleForm from "./Pages/VehicleManagementPage/EditVehicleForm";
 import Promo from "./Pages/Promo/Promo";
+import AddSupport from "./Pages/AddSupport/AddSupport";
+import Sos from "./Pages/Sos/Sos";
 
 const drawerWidth = 260;
 const toolbarStyle = {
@@ -614,7 +616,6 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 const queryClient = new QueryClient();
-
 function App() {
   const theme = useTheme();
   const { dashBoardName } = useContext(NameContext);
@@ -629,6 +630,7 @@ function App() {
 
     console.log(userType, "this is user type")
   }, [userType])
+
 
 
   // Redirect if not authorized
@@ -659,7 +661,6 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <div className="App">
         <Scrolltotop />
-
         <Box
           sx={{
             display: "flex",
@@ -807,6 +808,8 @@ function App() {
                     <Route path="/Dashboard/BNCommision" element={<BNCommisionPage />} />
                     <Route path="/test" element={<Test />} />
                     <Route path="/promo" element={<Promo />} />
+                    <Route path="/AddSupport" element={<AddSupport></AddSupport>}></Route>
+                    <Route path="/SOS" element={<Sos></Sos>}></Route>
                     <Route path="*" element={<Navigate to="/" />} />
                   </>
                 )}
