@@ -128,7 +128,7 @@
 //               }}
 //             />
 //           )}
-//             {text == "SpecificAdminPanel" && (
+//             {text == "Add Support" && (
 //               <GroupIcon
 //                 style={{
 //                   color: "var(--backColor29)",
@@ -172,7 +172,7 @@
 //     "WithdrawlManagement",
 //     "State&City",
 //     "ContactUs",
-//     "SpecificAdminPanel",
+//     "Add Support",
 //     "Setting",
 //   ];
 //   const ListConst2 = [
@@ -198,7 +198,7 @@
 
 // export default LeftSideBar;
 
-import React from "react";
+import React, { useEffect } from "react";
 import "../../App.css"
 import List from "@mui/material/List";
 import SpaceDashboardIcon from "@mui/icons-material/SpaceDashboard";
@@ -221,7 +221,12 @@ import LocationCityIcon from "@mui/icons-material/LocationCity";
 import MoneyRoundedIcon from '@mui/icons-material/MoneyRounded';
 import GroupIcon from '@mui/icons-material/Group';
 import DiscountIcon from '@mui/icons-material/Discount';
+import SosIcon from '@mui/icons-material/Sos';
+// import io from "socket.io-client";
 
+import alertSound from "../../alert.mp3";
+import { SOS_URL } from "../../variable";
+import socket from "../../socket";
 const BarComponent = ({ open, text, number, first, setFirst }) => {
   const navigateto = useNavigate();
 
@@ -330,8 +335,15 @@ const BarComponent = ({ open, text, number, first, setFirst }) => {
               }}
             />
           )}
-          {text == "SpecificAdminPanel" && (
+          {text == "AddSupport" && (
             <GroupIcon
+              style={{
+                color: "var(--backColor29)",
+              }}
+            />
+          )}
+          {text == "SOS" && (
+            <SosIcon
               style={{
                 color: "var(--backColor29)",
               }}
@@ -362,6 +374,32 @@ const LeftSideBar = ({ open }) => {
   const [first, setFirst] = React.useState(0);
   const userType = sessionStorage.getItem("userType");
 
+  useEffect(() => {
+    console.log(socket, "this is socket");
+  }, [socket]);
+
+  // Second useEffect to handle socket events
+  useEffect(() => {
+    // Setup event listeners
+    socket.on("connect", () => {
+      console.log("Connected to SOS server");
+    });
+    
+    socket.on("sos", (userId) => {
+      // alert(`SOS from ${userId}`);
+      const audio = new Audio(alertSound);
+      audio.play();
+    });
+
+    // Cleanup function
+    return () => {
+      socket.off("connect");
+      socket.off("sos");
+      // Don't disconnect here if you want to keep the socket alive across component unmounts
+      // socket.disconnect();
+    };
+  }, []);
+
   // Full list of menu items for ADMIN users
   const adminMenuItems = [
     "Dashboard",
@@ -376,7 +414,8 @@ const LeftSideBar = ({ open }) => {
     "WithdrawlManagement",
     "State&City",
     "ContactUs",
-    "SpecificAdminPanel",
+    "AddSupport",
+    "SOS",
     "Setting",
   ];
 

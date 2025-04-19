@@ -1,7 +1,7 @@
-import React, { useContext, useState, useEffect ,useRef} from "react";
+import React, { useContext, useState, useEffect, useRef } from "react";
 import "./ContactUs.css";
 import axios from "axios";
-import BASE_URL from "../../variable";
+import BASE_URL, { SOS_URL } from "../../variable";
 import { NameContext } from "../../Context";
 import CustomAlert from "../../Alert/CustomAlert";
 import { io } from "socket.io-client";
@@ -273,7 +273,7 @@ const ChatMessage = ({ message }) => {
     </Box>
   );
 };
-const socket = io("http://localhost:8080");
+const socket = io(`${SOS_URL}`);
 const ContactUsPage = () => {
   const [contacts, setContacts] = useState([]);
   const [activeContact, setActiveContact] = useState(null);
@@ -531,173 +531,173 @@ const ContactUsPage = () => {
 
   return (
     <ThemeProvider theme={darkTheme}>
-    <CssBaseline />
-    <Box className="contact-us-page">
-      <CustomAlert
-        open={alertState.state}
-        severity={alertState.severity}
-        message={alertState.message}
-        onClose={() => setAlertState({ ...alertState, state: false })}
-      />
-      
-      <Grid container spacing={3} sx={{ height: 'calc(100vh - 100px)' }}>
-        {/* Left sidebar with contacts list */}
-        <Grid item xs={12} md={4} sx={{ height: '100%' }}>
-          <Paper elevation={3} sx={{ p: 2, height: '100%', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
-              <Typography variant="h6" sx={{ display: 'flex', alignItems: 'center' }}>
-                <ChatIcon sx={{ mr: 1 }} />
-                Contact Requests ({contacts.length})
-              </Typography>
-              
-              <Button 
-                size="small" 
-                variant="outlined"
-                onClick={getAllContactUs}
-                startIcon={loading ? <CircularProgress size={16} /> : null}
-                disabled={loading}
-              >
-                Refresh
-              </Button>
-            </Box>
-            
-            <Divider sx={{ mb: 2 }} />
-            
-            {loading ? (
-              <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
-                <CircularProgress />
-              </Box>
-            ) : contacts && contacts.length > 0 ? (
-              <Box sx={{ overflow: 'auto', flex: 1, pr: 1 }} className="sidebar-contacts-list">
-                {contacts.map((contact, idx) => (
-                  <ContactCard
-                    key={contact._id || idx}
-                    item={contact}
-                    getAllContactUs={getAllContactUs}
-                    setActiveContact={setActiveContact}
-                    isActive={activeContact && activeContact._id === contact._id}
-                  />
-                ))}
-              </Box>
-            ) : (
-              <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
-                <Typography variant="body1" color="text.secondary">
-                  No contact requests found
+      <CssBaseline />
+      <Box className="contact-us-page">
+        <CustomAlert
+          open={alertState.state}
+          severity={alertState.severity}
+          message={alertState.message}
+          onClose={() => setAlertState({ ...alertState, state: false })}
+        />
+
+        <Grid container spacing={3} sx={{ height: 'calc(100vh - 100px)' }}>
+          {/* Left sidebar with contacts list */}
+          <Grid item xs={12} md={4} sx={{ height: '100%' }}>
+            <Paper elevation={3} sx={{ p: 2, height: '100%', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+              <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
+                <Typography variant="h6" sx={{ display: 'flex', alignItems: 'center' }}>
+                  <ChatIcon sx={{ mr: 1 }} />
+                  Contact Requests ({contacts.length})
                 </Typography>
+
+                <Button
+                  size="small"
+                  variant="outlined"
+                  onClick={getAllContactUs}
+                  startIcon={loading ? <CircularProgress size={16} /> : null}
+                  disabled={loading}
+                >
+                  Refresh
+                </Button>
               </Box>
-            )}
-          </Paper>
-        </Grid>
-        
-        {/* Right chat area */}
-        <Grid item xs={12} md={8} sx={{ height: '100%' }}>
-          <Paper elevation={3} sx={{ p: 0, height: '100%', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
-            {activeContact ? (
-              <>
-                {/* Contact header */}
-                <Box sx={{ p: 2, borderBottom: '1px solid #333', bgcolor: '#212121' }}>
-                  <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                      <Avatar sx={{ bgcolor: '#536dfe', mr: 2 }}>
-                        {activeContact.name ? activeContact.name.charAt(0).toUpperCase() : "?"}
-                      </Avatar>
-                      <Box>
-                        <Typography variant="h6">{activeContact.name || "Unknown"}</Typography>
-                        <Box sx={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 2 }}>
-                          <Typography variant="body2" color="text.secondary" sx={{ display: 'flex', alignItems: 'center' }}>
-                            <MarkEmailReadIcon fontSize="small" sx={{ mr: 0.5 }} />
-                            {activeContact.email || "No email"}
-                          </Typography>
-                          <Typography variant="body2" color="text.secondary" sx={{ display: 'flex', alignItems: 'center' }}>
-                            <PhoneEnabledIcon fontSize="small" sx={{ mr: 0.5 }} />
-                            +91{activeContact.phone || "No phone"}
-                          </Typography>
-                        </Box>
-                      </Box>
-                    </Box>
-                    
-                    <Box>
-                      <Button
-                        variant={(activeContact.status === "Open") ? "contained" : "outlined"}
-                        color={(activeContact.status === "Open") ? "success" : "primary"}
-                        size="small"
-                        onClick={() => handleStatusChange(activeContact.status === "Open" ? "Closed" : "Open")}
-                        startIcon={activeContact.status === "Open" ? <CloseIcon /> : <ChatIcon />}
-                        sx={{ mr: 1 }}
-                      >
-                        {activeContact.status === "Open" ? "Close" : "Reopen"} Request
-                      </Button>
-                    </Box>
-                  </Box>
+
+              <Divider sx={{ mb: 2 }} />
+
+              {loading ? (
+                <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
+                  <CircularProgress />
                 </Box>
-                
-                {/* Chat messages */}
-                <Box sx={{ p: 2, overflow: 'auto', flex: 1, display: 'flex', flexDirection: 'column' }} className="chat-messages-container">
-                  {activeContact.chatHistory && activeContact.chatHistory.length > 0 ? (
-                    activeContact.chatHistory.map((msg, idx) => (
-                      <ChatMessage key={idx} message={msg} />
-                    ))
-                  ) : (
-                    <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
-                      <Typography variant="body1" color="text.secondary">
-                        No messages yet. Start a conversation!
-                      </Typography>
-                    </Box>
-                  )}
-                  <div ref={chatEndRef} />
+              ) : contacts && contacts.length > 0 ? (
+                <Box sx={{ overflow: 'auto', flex: 1, pr: 1 }} className="sidebar-contacts-list">
+                  {contacts.map((contact, idx) => (
+                    <ContactCard
+                      key={contact._id || idx}
+                      item={contact}
+                      getAllContactUs={getAllContactUs}
+                      setActiveContact={setActiveContact}
+                      isActive={activeContact && activeContact._id === contact._id}
+                    />
+                  ))}
                 </Box>
-                
-                {/* Reply form */}
-                <Box sx={{ p: 2, borderTop: '1px solid #333' }}>
-                  <TextField
-                    fullWidth
-                    placeholder="Type your reply..."
-                    variant="outlined"
-                    value={replyMessage}
-                    onChange={(e) => setReplyMessage(e.target.value)}
-                    disabled={activeContact.status === "Closed" || sending}
-                    InputProps={{
-                      endAdornment: (
-                        <InputAdornment position="end">
-                          <IconButton 
-                            onClick={handleSendReply} 
-                            disabled={!replyMessage.trim() || activeContact.status === "Closed" || sending}
-                            color="primary"
-                          >
-                            {sending ? <CircularProgress size={24} /> : <SendIcon />}
-                          </IconButton>
-                        </InputAdornment>
-                      ),
-                    }}
-                    onKeyPress={(e) => {
-                      if (e.key === 'Enter' && !e.shiftKey) {
-                        e.preventDefault();
-                        handleSendReply();
-                      }
-                    }}
-                  />
-                  {activeContact.status === "Closed" && (
-                    <Typography variant="caption" color="error" sx={{ mt: 1, display: 'block' }}>
-                      This request is closed. Reopen it to send messages.
-                    </Typography>
-                  )}
-                </Box>
-              </>
-            ) : (
-              <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
-                <Box sx={{ textAlign: 'center' }}>
-                  <ChatIcon sx={{ fontSize: 60, color: '#424242', mb: 2 }} />
-                  <Typography variant="h6" color="text.secondary">
-                    Select a contact to view conversation
+              ) : (
+                <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
+                  <Typography variant="body1" color="text.secondary">
+                    No contact requests found
                   </Typography>
                 </Box>
-              </Box>
-            )}
-          </Paper>
+              )}
+            </Paper>
+          </Grid>
+
+          {/* Right chat area */}
+          <Grid item xs={12} md={8} sx={{ height: '100%' }}>
+            <Paper elevation={3} sx={{ p: 0, height: '100%', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+              {activeContact ? (
+                <>
+                  {/* Contact header */}
+                  <Box sx={{ p: 2, borderBottom: '1px solid #333', bgcolor: '#212121' }}>
+                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                        <Avatar sx={{ bgcolor: '#536dfe', mr: 2 }}>
+                          {activeContact.name ? activeContact.name.charAt(0).toUpperCase() : "?"}
+                        </Avatar>
+                        <Box>
+                          <Typography variant="h6">{activeContact.name || "Unknown"}</Typography>
+                          <Box sx={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 2 }}>
+                            <Typography variant="body2" color="text.secondary" sx={{ display: 'flex', alignItems: 'center' }}>
+                              <MarkEmailReadIcon fontSize="small" sx={{ mr: 0.5 }} />
+                              {activeContact.email || "No email"}
+                            </Typography>
+                            <Typography variant="body2" color="text.secondary" sx={{ display: 'flex', alignItems: 'center' }}>
+                              <PhoneEnabledIcon fontSize="small" sx={{ mr: 0.5 }} />
+                              +91{activeContact.phone || "No phone"}
+                            </Typography>
+                          </Box>
+                        </Box>
+                      </Box>
+
+                      <Box>
+                        <Button
+                          variant={(activeContact.status === "Open") ? "contained" : "outlined"}
+                          color={(activeContact.status === "Open") ? "success" : "primary"}
+                          size="small"
+                          onClick={() => handleStatusChange(activeContact.status === "Open" ? "Closed" : "Open")}
+                          startIcon={activeContact.status === "Open" ? <CloseIcon /> : <ChatIcon />}
+                          sx={{ mr: 1 }}
+                        >
+                          {activeContact.status === "Open" ? "Close" : "Reopen"} Request
+                        </Button>
+                      </Box>
+                    </Box>
+                  </Box>
+
+                  {/* Chat messages */}
+                  <Box sx={{ p: 2, overflow: 'auto', flex: 1, display: 'flex', flexDirection: 'column' }} className="chat-messages-container">
+                    {activeContact.chatHistory && activeContact.chatHistory.length > 0 ? (
+                      activeContact.chatHistory.map((msg, idx) => (
+                        <ChatMessage key={idx} message={msg} />
+                      ))
+                    ) : (
+                      <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
+                        <Typography variant="body1" color="text.secondary">
+                          No messages yet. Start a conversation!
+                        </Typography>
+                      </Box>
+                    )}
+                    <div ref={chatEndRef} />
+                  </Box>
+
+                  {/* Reply form */}
+                  <Box sx={{ p: 2, borderTop: '1px solid #333' }}>
+                    <TextField
+                      fullWidth
+                      placeholder="Type your reply..."
+                      variant="outlined"
+                      value={replyMessage}
+                      onChange={(e) => setReplyMessage(e.target.value)}
+                      disabled={activeContact.status === "Closed" || sending}
+                      InputProps={{
+                        endAdornment: (
+                          <InputAdornment position="end">
+                            <IconButton
+                              onClick={handleSendReply}
+                              disabled={!replyMessage.trim() || activeContact.status === "Closed" || sending}
+                              color="primary"
+                            >
+                              {sending ? <CircularProgress size={24} /> : <SendIcon />}
+                            </IconButton>
+                          </InputAdornment>
+                        ),
+                      }}
+                      onKeyPress={(e) => {
+                        if (e.key === 'Enter' && !e.shiftKey) {
+                          e.preventDefault();
+                          handleSendReply();
+                        }
+                      }}
+                    />
+                    {activeContact.status === "Closed" && (
+                      <Typography variant="caption" color="error" sx={{ mt: 1, display: 'block' }}>
+                        This request is closed. Reopen it to send messages.
+                      </Typography>
+                    )}
+                  </Box>
+                </>
+              ) : (
+                <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
+                  <Box sx={{ textAlign: 'center' }}>
+                    <ChatIcon sx={{ fontSize: 60, color: '#424242', mb: 2 }} />
+                    <Typography variant="h6" color="text.secondary">
+                      Select a contact to view conversation
+                    </Typography>
+                  </Box>
+                </Box>
+              )}
+            </Paper>
+          </Grid>
         </Grid>
-      </Grid>
-    </Box>
-  </ThemeProvider>
+      </Box>
+    </ThemeProvider>
   );
 };
 
