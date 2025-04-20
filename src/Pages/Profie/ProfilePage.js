@@ -94,13 +94,13 @@ const ProfilePage = () => {
       }}
     >
       <CustomAlert
-          open={alertState.state}
-          severity={alertState.severity}
-          message={alertState.message}
-          onClose={() => {
-            setAlertState({ ...alertState, state: false });
-          }}
-        />
+        open={alertState.state}
+        severity={alertState.severity}
+        message={alertState.message}
+        onClose={() => {
+          setAlertState({ ...alertState, state: false });
+        }}
+      />
       <form action="" className="ProfilePage_form" onSubmit={updateProfile}>
         <input
           type="file"
@@ -109,7 +109,7 @@ const ProfilePage = () => {
           accept="image/*"
           style={{ display: "none" }}
         />
-        {!selectedImage ? ( 
+        {!selectedImage ? (
           <img
             src={admin?.profilePic}
             onClick={handleUploadButtonClick}
