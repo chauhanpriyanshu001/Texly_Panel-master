@@ -10,11 +10,15 @@ function Sos() {
   useEffect(() => {
     fetchSosList();
   }, []);
+  const token = sessionStorage.getItem("adminToken");
 
   const fetchSosList = async () => {
     try {
       setLoading(true);
-      const res = await axios.get("http://localhost:8080/api/v1/admin/getSos");
+      console.log(token)
+      const res = await axios.get("http://localhost:8080/api/v1/admin/getSos",
+        { headers: { token, } }
+      );
       setSosList(res.data.data);
       setError(null);
     } catch (error) {
@@ -42,7 +46,7 @@ function Sos() {
   return (
     <div className="p-4">
       <h2 className="text-xl font-bold mb-4">SOS Alerts</h2>
-      
+
       {sosList.length === 0 ? (
         <p className="text-center p-4">No SOS alerts found</p>
       ) : (

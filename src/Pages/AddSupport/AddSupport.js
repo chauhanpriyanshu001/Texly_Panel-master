@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import BASE_URL from "../../variable";
-
+import axios from "axios";
 const AddSupport = () => {
+
+    const token = sessionStorage.getItem("adminToken");
     const [formData, setFormData] = useState({
         name: "",
         username: "",
@@ -33,9 +35,15 @@ const AddSupport = () => {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
+                    "token": token,
                 },
                 body: JSON.stringify(formData),
             });
+            // const response = await axios.post(`${BASE_URL}/admin/addRole`, formData, {
+            //     headers: {
+            //       token,
+            //     },
+            //   });
 
             const data = await response.json();
             if (response.ok) {
