@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import "./BookingManagement.css";
 import { useNavigate } from "react-router-dom";
@@ -6,6 +6,7 @@ import { Button } from "@mui/material";
 const ViewBooking = () => {
   const navigate = useNavigate();
   const location = useLocation();
+
   const { state } = location;
   const {
     userId,
@@ -23,7 +24,13 @@ const ViewBooking = () => {
     driverName,
     driverNumber,
     acceptedDriver,
+    feedback
   } = state;
+
+  useEffect(() => {
+    console.log(state, " state in ViewBooking component");
+  }, [state])
+
   return (
     <div className="ViewBooking-container">
       <Button
@@ -74,9 +81,14 @@ const ViewBooking = () => {
         {acceptedFare}
       </div>
       <div>
-        <span>User :</span>
+        <span>User:</span>
 
         {requestAmount}
+      </div>
+      <div>
+        <span>Feedback:</span>
+
+        {feedback}
       </div>
     </div>
   );

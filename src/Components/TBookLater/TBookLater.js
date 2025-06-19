@@ -17,7 +17,6 @@ const TBookLater = () => {
         },
       });
       setTodayBookLater(res?.data);
-      console.log(res,"this is error cause")
     } catch (error) {
       console.log(error);
     }
@@ -52,9 +51,7 @@ const TBookLater = () => {
               navigate("/DashBoard/TodayBookLater");
             }}
           >
-            {/* <h1>{TodayBookLater?.startedBookings?.count}</h1> */}
             <h1>{TodayBookLater?.startedBookings?.count}</h1>
-
             Accepted booking
           </div>
           <div
@@ -64,8 +61,7 @@ const TBookLater = () => {
               navigate("/DashBoard/TodayBookLater");
             }}
           >
-            {/* <h1>{TodayBookLater?.completedBookings?.count}</h1> */}
-            <h1>{TodayBookLater?.completedBookings?.count?.length || 0}</h1>
+            <h1>{TodayBookLater?.completedBookings?.count}</h1>
             Complete
           </div>
           <div
@@ -75,9 +71,7 @@ const TBookLater = () => {
               navigate("/DashBoard/TodayBookLater");
             }}
           >
-            {/* <h1>{TodayBookLater?.pendingBookings?.count}</h1> */}
-            <h1>{TodayBookLater?.pendingBookings?.count?.length}</h1>
-
+            <h1>{TodayBookLater?.pendingBookings?.count}</h1>
             Pending
           </div>
           <div
@@ -90,9 +84,7 @@ const TBookLater = () => {
               boxShadow: "var(--redBoxShadow)",
             }}
           >
-            {/* <h1>{TodayBookLater?.canceledBookings?.count}</h1> */}
-            <h1>{TodayBookLater?.canceledBookings?.count?.length}</h1>
-
+            <h1>{TodayBookLater?.canceledBookings?.count}</h1>
             Cancel
           </div>
         </div>

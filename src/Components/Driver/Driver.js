@@ -289,7 +289,7 @@ const Driver = () => {
           },
         }
       );
-      console.log(response);
+      console.log(response.data, "this is of users");
       setUsers(response.data);
     } catch (error) {
       console.log({ error, message: "error in api.js" });
@@ -311,11 +311,11 @@ const Driver = () => {
       <div
         className="Driver_piechart_container backImage"
 
-        // style={{
-        //   backgroundImage: images.topImage,
-        //   backgroundPosition:"center"
-        //   ,
-        // }}
+      // style={{
+      //   backgroundImage: images.topImage,
+      //   backgroundPosition:"center"
+      //   ,
+      // }}
       >
         <div className="Driver_TinyLineChart_container backImage">
           <TinyLineChart />

@@ -36,11 +36,13 @@ const CreateVehicleForm = () => {
   formData.append("order", order);
 
   const handleSubmit = async (event) => {
+    console.log(formData);
     event.preventDefault();
     const token = sessionStorage.getItem("adminToken");
     try {
       await axios.post(`${BASE_URL}/admin/createVehicle`, formData, {
         headers: {
+          'Content-Type': 'multipart/form-data',
           token,
         },
       });
@@ -49,7 +51,7 @@ const CreateVehicleForm = () => {
         message: "Created successfully",
         severity: "success",
       });
-      navigate("/VehicleManagement");
+      // navigate("/VehicleManagement");
 
     } catch (error) {
       console.log(error);
@@ -186,7 +188,7 @@ const CreateVehicleForm = () => {
             </label>
             <label
               className={selectedValue === "PERCENTAGE" ? "label_hightligher" : ""}
-            
+
             >
               <input
                 type="radio"
@@ -206,7 +208,7 @@ const CreateVehicleForm = () => {
           <div style={{ display: "flex", gap: "10px" }}>
             <label
               className={bookingType === "BOOKNOW" ? "label_hightligher" : ""}
-            
+
             >
               <input
                 type="radio"
@@ -218,7 +220,7 @@ const CreateVehicleForm = () => {
             </label>
             <label
               className={bookingType === "BOOKLATER" ? "label_hightligher" : ""}
-            
+
             >
               <input
                 type="radio"
@@ -229,9 +231,9 @@ const CreateVehicleForm = () => {
               Book Later
             </label>
             <label
-            
-            className={bookingType === "BOTH" ? "label_hightligher" : ""}
-            
+
+              className={bookingType === "BOTH" ? "label_hightligher" : ""}
+
             >
               <input
                 type="radio"
@@ -243,7 +245,7 @@ const CreateVehicleForm = () => {
             </label>
             <label
               className={bookingType === "FREIGHT" ? "label_hightligher" : ""}
-            
+
             >
               <input
                 type="radio"

@@ -16,7 +16,7 @@ function Sos() {
     try {
       setLoading(true);
       console.log(token)
-      const res = await axios.get("https://admin.texly.in/api/v1/admin/getSos",
+      const res = await axios.get("http://localhost:8080/api/v1/admin/getSos",
         { headers: { token, } }
       );
       setSosList(res.data.data);

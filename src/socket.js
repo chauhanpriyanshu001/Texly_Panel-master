@@ -1,7 +1,7 @@
 
 import { io } from "socket.io-client";
 
-const socket = io("https://admin.texly.in", {
+const socket = io("http://localhost:8080", {
     reconnection: true,
     reconnectionAttempts: 5,
     reconnectionDelay: 1000,

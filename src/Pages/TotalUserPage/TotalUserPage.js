@@ -114,6 +114,35 @@ const TableRow = ({ item, GetAllUser, count }) => {
       });
     }
   };
+  const handleCancelUser = async (updateTo) => {
+    const token = sessionStorage.getItem("adminToken");
+    try {
+      await axios.patch(
+        `${BASE_URL}/admin/updateBlockStatus/${_id}`,
+        {
+          blockStatus: updateTo,
+        },
+        {
+          headers: {
+            token,
+          },
+        }
+      );
+      setAlertState({
+        state: true,
+        message: `Block Status ${updateTo} Successfully`,
+        severity: "success",
+      });
+      GetAllUser();
+    } catch (error) {
+      console.log(error);
+      setAlertState({
+        state: true,
+        message: "Something went wrong",
+        severity: "error",
+      });
+    }
+  };
 
   // const formattedDate = new Intl.DateTimeFormat('en-US', options).format(createdAtDate);
   return (
@@ -213,6 +242,29 @@ const TableRow = ({ item, GetAllUser, count }) => {
           />
         )}
       </td>
+      <td>
+        {item.blockStatus !== "UNBLOCKED" ? (
+          <BlockIcon
+            style={{
+              color: "red",
+              cursor: "pointer",
+            }}
+            onClick={() => {
+              handleCancelUser("UNBLOCKED");
+            }}
+          />
+        ) : (
+          <Brightness1Icon
+            style={{
+              color: "green",
+              cursor: "pointer",
+            }}
+            onClick={() => {
+              handleCancelUser("BLOCKED");
+            }}
+          />
+        )}
+      </td>
     </tr>
   );
 };
@@ -242,6 +294,7 @@ function TotalUserPage() {
           },
         }
       );
+      console.log(response.data);
       setRowData(response.data);
     } catch (error) {
       console.log({ error, message: "error in api.js" });
@@ -383,7 +436,7 @@ function TotalUserPage() {
       >
         Search
       </Button>
-      
+
       <select
         className="select"
         style={{
@@ -433,6 +486,7 @@ function TotalUserPage() {
           <th>View</th>
           <th>Delete</th>
           <th>Block/Unblock</th>
+          <th>Cancellation Status</th>
         </tr>
         {rowData?.result?.map((item, idx) => {
           return (
